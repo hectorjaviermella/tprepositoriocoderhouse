@@ -1,3 +1,3 @@
 # tprepositoriocoderhouse
 Repositorio para presentacion de trabajos
-Presentacion de Hector Javier Mella. Trabajo ProductManager 
+Presentacion de Hector Javier Mella.
