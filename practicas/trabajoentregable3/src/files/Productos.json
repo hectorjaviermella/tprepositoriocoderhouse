@@ -1,0 +1,107 @@
+[
+	{
+		"pTitle": "producto prueba 1",
+		"pDescription": "este es el producto prueba 1 ",
+		"pCode": "abc123",
+		"pPrice": 200,
+		"pThumbnail": "sin imagen",
+		"pStock": 25,
+		"pId": 1
+	},
+
+	{
+		"pTitle": "producto prueba 2",
+		"pDescription": "este es el producto prueba2 ",
+		"pCode": "abc124",
+		"pPrice": 300,
+		"pThumbnail": "sin imagen",
+		"pStock": 30,
+		"pId": 2
+	}
+	,
+
+	{
+		"pTitle": "producto prueba3",
+		"pDescription": "este es el producto prueba2 3",
+		"pCode": "abc124",
+		"pPrice": 300,
+		"pThumbnail": "sin imagen",
+		"pStock": 30,
+		"pId": 3
+	}
+	,
+
+	{
+		"pTitle": "producto prueba 4",
+		"pDescription": "este es el producto prueba4 ",
+		"pCode": "abc124",
+		"pPrice": 300,
+		"pThumbnail": "sin imagen",
+		"pStock": 30,
+		"pId": 4
+	}
+	,
+
+	{
+		"pTitle": "producto prueba5",
+		"pDescription": "este es el producto prueba5 ",
+		"pCode": "abc124",
+		"pPrice": 300,
+		"pThumbnail": "sin imagen",
+		"pStock": 30,
+		"pId": 5
+	}
+	,
+
+	{
+		"pTitle": "producto prueba6",
+		"pDescription": "este es el producto prueba6 ",
+		"pCode": "abc124",
+		"pPrice": 300,
+		"pThumbnail": "sin imagen",
+		"pStock": 30,
+		"pId": 6
+	}
+	,
+
+	{
+		"pTitle": "producto prueba7",
+		"pDescription": "este es el producto prueba7 ",
+		"pCode": "abc124",
+		"pPrice": 300,
+		"pThumbnail": "sin imagen",
+		"pStock": 30,
+		"pId": 7
+	}
+	,
+
+	{
+		"pTitle": "producto prueba8",
+		"pDescription": "este es el producto prueba8 ",
+		"pCode": "abc124",
+		"pPrice": 300,
+		"pThumbnail": "sin imagen",
+		"pStock": 30,
+		"pId": 8
+	},
+
+	{
+		"pTitle": "producto prueba9",
+		"pDescription": "este es el producto prueba9 ",
+		"pCode": "abc124",
+		"pPrice": 300,
+		"pThumbnail": "sin imagen",
+		"pStock": 30,
+		"pId": 9
+	},
+
+	{
+		"pTitle": "producto prueba10",
+		"pDescription": "este es el producto prueba10 ",
+		"pCode": "abc124",
+		"pPrice": 300,
+		"pThumbnail": "sin imagen",
+		"pStock": 30,
+		"pId": 10
+	}
+]

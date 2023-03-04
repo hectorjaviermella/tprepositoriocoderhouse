@@ -19,21 +19,41 @@ export default class ProductManager{
           };
 
 
+////////////////////////////////////////////////////////////////////
+findCod = async(pCode) => {
+            const productos = await this.getProducts();
+            const indiceproducto = productos.findIndex(producto => producto.pCode === pCode);
+            if (indiceproducto === -1){ //no encontro el producto
+               //console.log(`Producto con  pcode ${pCode} no existe`)
+                return null;
+            }else{ //encontro el  producto 
+                //console.log(`Producto cofindCodn id ${pCode}  existe `)
+                return(productos[indiceproducto]);
+            }     
+   };
 
-
- ////////////////////////////////////////////////////////////////////
    addProduct = async(producto) => {
             console.log("entro al crear producto");
+            if (!producto.pTitle  || !producto.pDescription || !producto.pPrice || !producto.pThumbnail || !producto.pCode || !producto.pStock){
+               console.log("Error: es obligatorio ingresar todo los campos")
+               return;
+           }
             const productos = await this.getProducts();
-            if (productos.length === 0){               
-                producto.pId = 1;
-            }else {
-               producto.pId = productos[productos.length - 1].pId +1;
-            }
+            //devuelve si esta  el pcode ya inserto 
+            const encontro = await this.findCod(producto.pCode);
+            if (!encontro){
+                  if (productos.length === 0){               
+                     producto.pId = 1;
+                  }else {
+                     producto.pId = productos[productos.length - 1].pId +1;
+                  }
 
-            productos.push(producto);            
-            await fs.promises.writeFile(this.path, JSON.stringify(productos,null,"\t"));
-            return producto;
+                  productos.push(producto);            
+                  await fs.promises.writeFile(this.path, JSON.stringify(productos,null,"\t"));
+                  return producto;
+               }else{
+                  console.log(`El codigo del producto  ${producto.pCode}  ya esta inserto `)
+               }
           };
 
 
@@ -115,6 +135,5 @@ getProductsById= async(pId) => {
 
                };
 };
-
 
 }
