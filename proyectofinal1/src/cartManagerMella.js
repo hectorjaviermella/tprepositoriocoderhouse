@@ -92,7 +92,7 @@ getCartsById= async(cId) => {
 };
 
 //////////////////////////////////////////////////////////////////
-addProductToCart = async(cId,pId) => {
+addProductToCart = async(cId,pId,pquantity) => {
    console.log("entro al crear agregar producto a un carrito");
    if ((!cId) ||  (!pId)){           
      return "Error: es obligatorio ingresar todo los campos";
@@ -105,14 +105,14 @@ addProductToCart = async(cId,pId) => {
       return  "No existe el carrito";
    }
    
-   let productstocart = cart.products;  
    try {
-      console.log("lista de productos del carrito");     
+      console.log("lista de productos del carrito");    
+      let productstocart = cart.products; 
       let indexproduct = productstocart.findIndex((product) => product.pId == pId);   
       if (indexproduct === -1){ //no encontro el producto
         // console.log(`El Producto con id ${productstocart.pId} no existe en el carrito`)
             
-        const productagregar = {"pId" : Number(pId) , "quantity" : 1};
+        const productagregar = {"pId" : Number(pId) , "quantity" : Number(pquantity.quantity)};
         productstocart.push(productagregar);
         cart.products=productstocart; 
         const cartsactualizado = await this.updatedCart(cart); 
@@ -121,7 +121,7 @@ addProductToCart = async(cId,pId) => {
 
          }else{ //encontro el  producto en mi carrito
             //preparar objeto a modificar         
-             productstocart[indexproduct].quantity=productstocart[indexproduct].quantity +1;
+             productstocart[indexproduct].quantity=productstocart[indexproduct].quantity +  Number(pquantity.quantity);
            cart.products=productstocart;           
            const cartsactualizado = await this.updatedCart(cart); 
              //return cartsactualizado;

@@ -42,10 +42,11 @@ router.post("/",async (req, res) => {
 /////////////////////////////////////////////////////////////////////////////////////////////
 router.post("/:cId/product/:pId",async (req, res) => {
   console.log("entro al post carts incremetar");
-  //const cart = req.body;
+  const pquantity = req.body;
+  console.log(pquantity.quantity);
   const cId = req.params.cId;
   const pId = req.params.pId;   
-  let error =  await carts.addProductToCart(cId,pId);  
+  let error =  await carts.addProductToCart(cId,pId,pquantity);  
   console.log(error);
   return res.send(error);
   /*

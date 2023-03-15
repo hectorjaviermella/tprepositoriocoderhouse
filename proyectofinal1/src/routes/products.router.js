@@ -51,17 +51,12 @@ router.get("/", async (req, res) => {
 
 /////////////////////////////////////////////////////////////////////////////////////
 router.put("/:pId",async (req, res) => {
-  console.log("entro al put");
+  console.log("entro al put de productos");
   const pIdparametro = req.params.pId;
   console.log(pIdparametro);
-
   const producto = req.body;
   producto.pId=parseInt(pIdparametro);
-  console.log(producto);
-
-  let error =  await products.updateProducto(producto);
-  ///console.log(error);
- 
+  let error =  await products.updateProducto(producto); 
  if ( (error === undefined) || (error === null)) {
   return res.send({ status: "No  existe el producto" });
 }else{

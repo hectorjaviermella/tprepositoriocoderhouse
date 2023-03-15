@@ -135,18 +135,20 @@ getProductsById= async(pId) => {
             if (indiceproducto === -1){ //no encontro el producto
             console.log(`El Producto con id ${productoudpate.pId} no existe`)
                return null;
-            }else{ //encontro el  producto 
-               //preparar objeto a modificar               
-               productoudpate.pid ??= productos[indiceproducto].pid;
-               productoudpate.pCode ??= productos[indiceproducto].pCode;
-               productoudpate.pTitle ??= productos[indiceproducto].pTitle;
-               productoudpate.pDescription ??= productos[indiceproducto].pDescription;
-               productoudpate.pPrice ??= productos[indiceproducto].pPrice;
-               productoudpate.pThumbnail ??= productos[indiceproducto].pThumbnail;
-               productoudpate.pStock ??= productos[indiceproducto].pStock;
-               productos[indiceproducto] = productoudpate;               
+            }else{ //encontro el  producto          
+             
+               (productoudpate.pCode!=null) ? (productos[indiceproducto].pCode=productoudpate.pCode) : "";
+               (productoudpate.pTitle!=null) ? (productos[indiceproducto].pTitle=productoudpate.pTitle) : "";
+               (productoudpate.pDescription!=null) ? (productos[indiceproducto].pDescription=productoudpate.pDescription) : "";
+               (productoudpate.pPrice!=null) ? (productos[indiceproducto].pPrice=productoudpate.pPrice) : "";
+               (productoudpate.pThumbnail!=null) ? (productos[indiceproducto].pThumbnail=productoudpate.pThumbnail) : "";
+               (productoudpate.pStock!=null) ? (productos[indiceproducto].pStock=productoudpate.pStock) : "";
+               (productoudpate.pCategory!=null) ? (productos[indiceproducto].pCategory=productoudpate.pCategory) : "";
+               (productoudpate.pStatus!=null) ? (productos[indiceproducto].pStatus=productoudpate.pStatus) : "";
+               
+               console.log(productos[indiceproducto]);
                await fs.promises.writeFile(this.path, JSON.stringify(productos,null,"\t"));
-               //console.log(productos);
+               
                return productos;
             }           
 
