@@ -60,6 +60,7 @@ router.put("/:pId",async (req, res) => {
  if ( (error === undefined) || (error === null)) {
   return res.send({ status: "No  existe el producto" });
 }else{
+  
 
   return res.status(200).send({ status: "Success" , message: "Products succesfully update" });
 }

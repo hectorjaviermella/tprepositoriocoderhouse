@@ -150,7 +150,8 @@ getProductsById= async(pId) => {
                await fs.promises.writeFile(this.path, JSON.stringify(productos,null,"\t"));
                
                return productos;
-            }           
+            }      
+                 
 
                };
 };
