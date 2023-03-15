@@ -10,9 +10,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
 
-
-
-
 app.listen(8080, () => {
   console.log("Servidorr escuchando en el puerto 8080");
   

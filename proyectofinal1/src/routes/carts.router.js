@@ -58,10 +58,4 @@ router.post("/:cId/product/:pId",async (req, res) => {
 });
 
 
-
-
-
-
-
-
 export default router;

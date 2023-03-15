@@ -126,7 +126,6 @@ getProductsById= async(pId) => {
 };
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
  //update producto
-
     updateProducto= async (productoudpate) => {
          if (fs.existsSync(this.path)){
             console.log("entro a modificar un producto");
