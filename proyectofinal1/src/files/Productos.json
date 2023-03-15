@@ -1,0 +1,30 @@
+[
+	{
+		"pId": 1,
+		"pTitle": "Cheese2",
+		"pDescription": "500 gr",
+		"pCode": "AGSM123",
+		"pPrice": 24,
+		"pStatus": true,
+		"pStock": 1,
+		"pCategory": "food",
+		"pThumbnail": [
+			"http://localhost:8080/images/image1.jpg",
+			"http://localhost:8080/images/image2.jpg"
+		]
+	},
+	{
+		"pId": 2,
+		"pTitle": "Cheese2",
+		"pDescription": "500 gr",
+		"pCode": "AGSM124",
+		"pPrice": 24,
+		"pStatus": true,
+		"pStock": 1,
+		"pCategory": "food",
+		"pThumbnail": [
+			"http://localhost:8080/images/image1.jpg",
+			"http://localhost:8080/images/image2.jpg"
+		]
+	}
+]

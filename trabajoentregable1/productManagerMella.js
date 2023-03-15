@@ -2,11 +2,14 @@ class ProductManager{
     constructor(){
         this.products = [];    
     }
-  //////////////////////////////////////////////////////////////////////////////// 
+    
+  //////////////////////////////////////////////////////////////////////////////////// 
+  
   getProducts = () => {
     console.log(this.products);
     return this.products;    //devuelve array de productos    
 }    
+
 /////////////////////////////////////////////////////////////////////// 
   addProduct = (pTitle,pDescription,pPrice,pThumbnail,pCode,pStock) => {
     if (!pTitle  || !pDescription || !pPrice || !pThumbnail || !pCode || !pStock){

@@ -4,12 +4,13 @@ export default class ProductManager{
 
          constructor(){
            
-            this.path = "./files/Productos.json";
+            this.path = "./src/files/Productos.json";
          }
 ////////////////////////////////////////////////////////////////////
    getProducts = async () => {    //devuelve array de productos
          if (fs.existsSync(this.path)){
                 const data = await fs.promises.readFile(this.path, "utf-8");
+              //  console.log("data" + data);
                 const result = JSON.parse(data);
                 //console.log(result);
                 return result;
@@ -34,14 +35,22 @@ findCod = async(pCode) => {
 
    addProduct = async(producto) => {
             console.log("entro al crear producto");
-            if (!producto.pTitle  || !producto.pDescription || !producto.pPrice || !producto.pThumbnail || !producto.pCode || !producto.pStock){
-               console.log("Error: es obligatorio ingresar todo los campos")
-               return;
+            if (!producto.pTitle  || !producto.pDescription || !producto.pPrice || !producto.pStatus===null || !producto.pThumbnail 
+               || !producto.pCode ||  !producto.pStock===null  || !producto.pCategory){
+              // console.log("Error: es obligatorio ingresar todo los campos")                           
+                 return undefined;
            }
+           console.log("entro al crear producto 2");
             const productos = await this.getProducts();
             //devuelve si esta  el pcode ya inserto 
             const encontro = await this.findCod(producto.pCode);
             if (!encontro){
+                  if (producto.pStock===0){
+                     producto.pStatus=false;
+                  }else{
+                     producto.pStatus=true;
+                  }
+                
                   if (productos.length === 0){               
                      producto.pId = 1;
                   }else {
@@ -50,57 +59,70 @@ findCod = async(pCode) => {
 
                   productos.push(producto);            
                   await fs.promises.writeFile(this.path, JSON.stringify(productos,null,"\t"));
-                  return producto;
+                  return true;
                }else{
-                  console.log(`El codigo del producto  ${producto.pCode}  ya esta inserto `)
+                  
+                  console.log(`El codigo del producto  ${producto.pCode}  ya esta inserto `);
+                  return null;
                }
           };
 
 
 ///////////////// ////////////////////////////////////////////////////////////////////
 getProductsById= async(pId) => {
+         if (fs.existsSync(this.path)){         
+            console.log("entro al getprodubyid " + pId);  
+           const productos = await this.getProducts();      
+            let producto = productos.find((producto) => producto.pId == pId);
+       
+           if (producto){
+              try {
+               console.log(`Producto con id ${pId}  existe `)
+               return(producto);
 
-         if (fs.existsSync(this.path)){
-           
-           const productos = await this.getProducts();
-            const indiceproducto = productos.findIndex(producto => producto.pId === pId);
-                        
-            
-            if (indiceproducto === -1){ //no encontro el producto
-               console.log(`Producto con  id ${pId} no existe`)
-                return [];
-            }else{ //encontro el  producto 
-                console.log(`Producto con id ${pId}  existe `)
-                return(productos[indiceproducto]);
-            }           
+              } catch (error) {
+               console.log("entro al cathc");
+                 console.log(error);
+              }
+
+           }
          } else {   //archivo no existe
-            return [];
+            console.log(`Producto con  id ${pId} no existe`)
+            return null;
          }
+
+
+
+            
 };
  ////////////////////////////////////////////////////////////////////
  //  eliminarProducto
  deleteProduct = async (pId) => {   
-   if (fs.existsSync(this.path)){
-          console.log("entro a eliminar un producto");
-          const productos = await this.getProducts();
-          const indiceproducto = productos.findIndex(producto => producto.pId === pId);          
-
-          if (indiceproducto === -1){ //no encontro el producto
-            console.log(`El producto con id  ${pId} no existe`)
-             return [];
-         }else{ //encontro el  producto 
-       
-            for( var i = 0; i < productos.length; i++){                                    
-               if ( productos[i].pId === pId) { 
-                  productos.splice(i, 1); 
-                   i--; 
-               }
-           }
-            await fs.promises.writeFile(this.path, JSON.stringify(productos,null,"\t"));            
-            return productos;
-         }               
+      if (fs.existsSync(this.path)){
+          console.log("entro a eliminar un producto");        
+          const productos = await this.getProducts();          
+          //const producto = productos.find((producto) => producto.pId === pId);  
+          let producto = productos.find((producto) => producto.pId == pId);  
+         if (producto){
+            try {
+              
+               for( var i = 0; i < productos.length; i++){                                    
+                  if ( productos[i].pId == pId) { 
+                     productos.splice(i, 1); 
+                      i--; 
+                  }
+               }               
+               await fs.promises.writeFile(this.path, JSON.stringify(productos,null,"\t"));            
+              return true; 
+            } catch (error) {
+               console.log(error);
+            }
+         }else{
+            console.log(`Producto con  id ${pId} no existe`)
+             return null;
+         }     
       
-                           };
+                      };
 };
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
  //update producto
@@ -113,10 +135,9 @@ getProductsById= async(pId) => {
 
             if (indiceproducto === -1){ //no encontro el producto
             console.log(`El Producto con id ${productoudpate.pId} no existe`)
-               return [];
+               return null;
             }else{ //encontro el  producto 
-               //preparar objeto a modificar
-               
+               //preparar objeto a modificar               
                productoudpate.pid ??= productos[indiceproducto].pid;
                productoudpate.pCode ??= productos[indiceproducto].pCode;
                productoudpate.pTitle ??= productos[indiceproducto].pTitle;
@@ -124,14 +145,11 @@ getProductsById= async(pId) => {
                productoudpate.pPrice ??= productos[indiceproducto].pPrice;
                productoudpate.pThumbnail ??= productos[indiceproducto].pThumbnail;
                productoudpate.pStock ??= productos[indiceproducto].pStock;
-
-               productos[indiceproducto] = productoudpate;
-               
+               productos[indiceproducto] = productoudpate;               
                await fs.promises.writeFile(this.path, JSON.stringify(productos,null,"\t"));
-               console.log(productos);
+               //console.log(productos);
                return productos;
-            }   
-          
+            }           
 
                };
 };

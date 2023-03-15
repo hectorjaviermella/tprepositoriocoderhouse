@@ -6,15 +6,6 @@
 		"pPrice": 200,
 		"pThumbnail": "sin imagen",
 		"pStock": 25,
-		"pId": 2
-	},
-	{
-		"pTitle": "producto prueba",
-		"pDescription": "este es el producto prueba ",
-		"pCode": "abc123",
-		"pPrice": 200,
-		"pThumbnail": "sin imagen",
-		"pStock": 25,
-		"pId": 3
+		"pId": 1
 	}
 ]

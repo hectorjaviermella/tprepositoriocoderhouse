@@ -1,0 +1,46 @@
+[
+	{
+		"cId": 1,
+		"products": [
+			{
+				"pId": 1,
+				"quantity": 3
+			},
+			{
+				"pId": 2,
+				"quantity": 1
+			},
+			{
+				"pId": -200,
+				"quantity": 2
+			}
+		]
+	},
+	{
+		"cId": 2,
+		"products": [
+			{
+				"pId": 1,
+				"quantity": 1
+			}
+		]
+	},
+	{
+		"cId": 3,
+		"products": [
+			{
+				"pId": 1,
+				"quantity": 1
+			}
+		]
+	},
+	{
+		"cId": 4,
+		"products": [
+			{
+				"pId": 1,
+				"quantity": 2
+			}
+		]
+	}
+]

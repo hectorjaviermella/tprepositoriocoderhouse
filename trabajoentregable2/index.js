@@ -8,7 +8,7 @@ let products = new ProductManager();
 const env = async () => {
 
 // 2 - llamado getproducts
-   // let primeraConsulta = await products.getProducts();
+  //  let primeraConsulta = await products.getProducts();
    // console.log(primeraConsulta);
 
 // 3 - llamado a metodo addproduct
@@ -20,8 +20,9 @@ const producto ={
              pThumbnail:"sin imagen",
              pStock: 25, 
 };
-//let tercerconsulta = await products.addProduct(producto);
-//console.log(tercerconsulta);
+
+let tercerconsulta = await products.addProduct(producto);
+console.log(tercerconsulta);
 
 
 
@@ -49,8 +50,8 @@ console.log(sextaconsulta);
 */
 
 ///7 - llamado metodo deleteProduct 
-let septimaconsulta = await products.deleteProduct(1);
-console.log(septimaconsulta);
+//let septimaconsulta = await products.deleteProduct(1);
+//console.log(septimaconsulta);
 
 
 };
